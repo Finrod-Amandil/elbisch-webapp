@@ -1,0 +1,555 @@
+@font-face {
+    font-family: 'Tengwar Annatar';
+    src: url('../fonts/tengwar-annatar.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Alt';
+    src: url('../fonts/tengwar-annatar-alt.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Italic';
+    src: url('../fonts/tengwar-annatar-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Alt Italic';
+    src: url('../fonts/tengwar-annatar-alt-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Bold';
+    src: url('../fonts/tengwar-annatar-bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Alt Bold';
+    src: url('../fonts/tengwar-annatar-alt-bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Bold Italic';
+    src: url('../fonts/tengwar-annatar-bold-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Annatar Alt Bold Italic';
+    src: url('../fonts/tengwar-annatar-alt-bold-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Noldor';
+    src: url('../fonts/tengwar-noldor.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Noldor Cap2';
+    src: url('../fonts/tengwar-noldor-cap2.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Quenya';
+    src: url('../fonts/tengwar-quenya.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Quenya Cap2';
+    src: url('../fonts/tengwar-quenya-cap2.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Sindarin';
+    src: url('../fonts/tengwar-sindarin.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Sindarin Cap2';
+    src: url('../fonts/tengwar-sindarin-cap2.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Beleriand';
+    src: url('../fonts/tengwar-beleriand.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Elfica';
+    src: url('../fonts/tengwar-elfica.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Formal';
+    src: url('../fonts/tengwar-formal.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Cursive';
+    src: url('../fonts/tengwar-cursive.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Parmaite';
+    src: url('../fonts/tengwar-parmaite.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Eldamar';
+    src: url('../fonts/tengwar-eldamar.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Eldamar Alt';
+    src: url('../fonts/tengwar-eldamar-alt.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Galvorn';
+    src: url('../fonts/tengwar-galvorn.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Mornedhel';
+    src: url('../fonts/tengwar-mornedhel.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Telerin';
+    src: url('../fonts/tengwar-telerin.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Hereno';
+    src: url('../fonts/tengwar-hereno.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Elfic Caslon';
+    src: url('../fonts/elfic-caslon.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Gothika';
+    src: url('../fonts/tengwar-gothika.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Greifswalder Tengwar';
+    src: url('../fonts/greifswalder-tengwar.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Tengwar Optime';
+    src: url('../fonts/tengwar-optime.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cirth Erebor';
+    src: url('../fonts/cirth-erebor.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cirth Erebor Cap2';
+    src: url('../fonts/cirth-erebor-cap2.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cirth Erebor 1';
+    src: url('../fonts/cirth-erebor-1.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cirth Erebor 2';
+    src: url('../fonts/cirth-erebor-2.ttf') format('truetype');
+}
+
+@media (max-width: 1400px) {
+	.container-inner {
+		width: 90%
+	}
+}
+
+.hint {
+	font-style: italic;
+	font-size: 0.8em;
+	padding-top: 10px;
+	padding-left: 0px;
+}
+
+div.hint p {
+	margin-bottom: 0px;
+}
+
+#row-lang .hint {
+	padding-top: 4px;
+}
+
+.label {
+	padding-top: 5px;
+	font-weight: bold;
+}
+
+.required {
+	color: red;
+}
+
+.scripts-label {
+	padding-top: 38px;
+}
+
+.checkbox-row {
+	margin-left: 0px;
+}
+
+div.elements-container div.row {
+	margin-top: 5px;
+}
+
+label.form-check-label {
+	line-heigth: 1;
+}
+
+tr.script-row, tr.script-row td div {
+	height: 85px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+td.col2, th.header {
+	border-left: 1px solid darkgrey;
+	border-right: 1px solid darkgrey;
+}
+
+td.col1 {
+	width: 25px;
+}
+
+td.col2 {
+	width: 40px;
+}
+
+td.col3 {
+	width: 220px;
+}
+
+td.col1, td.col2 {
+	vertical-align: top;
+}
+
+td.col1 .form-check-input {
+	margin-left: 0px;
+	margin-top: 20px;
+}
+
+td.col2 .form-check-input {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+th.header {
+	text-align: center;
+	font-weight: normal;
+	font-size: 0.9em;
+}
+
+.header p {
+	margin-bottom: 0px;
+}
+
+a.question-mark {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.tengwar-annatar {
+	font-family: 'Tengwar Annatar';
+	font-size: 30px;
+}
+.tengwar-annatar-alt {
+	font-family: 'Tengwar Annatar Alt';
+	font-size: 30px;
+}
+.tengwar-annatar-bold {
+	font-family: 'Tengwar Annatar Bold';
+	font-size: 30px;
+}
+.tengwar-annatar-alt-bold {
+	font-family: 'Tengwar Annatar Alt Bold';
+	font-size: 30px;
+}
+.tengwar-annatar-italic {
+	font-family: 'Tengwar Annatar Italic';
+	font-size: 30px;
+}
+.tengwar-annatar-alt-italic {
+	font-family: 'Tengwar Annatar Alt Italic';
+	font-size: 30px;
+}
+.tengwar-annatar-bold-italic {
+	font-family: 'Tengwar Annatar Bold Italic';
+	font-size: 30px;
+}
+.tengwar-annatar-alt-bold-italic {
+	font-family: 'Tengwar Annatar Alt Bold Italic';
+	font-size: 30px;
+}
+.tengwar-noldor {
+	font-family: 'Tengwar Noldor';
+	font-size: 30px;
+}
+.tengwar-noldor-cap {
+	font-family: 'Tengwar Noldor Cap2';
+	font-size: 30px;
+}
+.tengwar-quenya {
+	font-family: 'Tengwar Quenya';
+	font-size: 30px;
+}
+.tengwar-quenya-cap {
+	font-family: 'Tengwar Quenya Cap2';
+	font-size: 30px;
+}
+.tengwar-sindarin {
+	font-family: 'Tengwar Sindarin';
+	font-size: 30px;
+}
+.tengwar-sindarin-cap {
+	font-family: 'Tengwar Sindarin Cap2';
+	font-size: 30px;
+}
+.tengwar-beleriand {
+	font-family: 'Tengwar Beleriand';
+	font-size: 30px;
+}
+.tengwar-elfica {
+	font-family: 'Tengwar Elfica';
+	font-size: 30px;
+}
+.tengwar-formal {
+	font-family: 'Tengwar Formal';
+	font-size: 52px;
+}
+.tengwar-cursive {
+	font-family: 'Tengwar Cursive';
+	font-size: 90px;
+}
+.tengwar-parmaite {
+	font-family: 'Tengwar Parmaite';
+	font-size: 48px;
+}
+.tengwar-eldamar {
+	font-family: 'Tengwar Eldamar';
+	font-size: 34px;
+}
+.tengwar-eldamar-alt {
+	font-family: 'Tengwar Eldamar Alt';
+	font-size: 34px;
+}
+.tengwar-galvorn {
+	font-family: 'Tengwar Galvorn';
+	font-size: 26px;
+}
+.tengwar-mornedhel {
+	font-family: 'Tengwar Mornedhel';
+	font-size: 26px;
+}
+.tengwar-telerin {
+	font-family: 'Tengwar Telerin';
+	font-size: 44px;
+}
+.tengwar-hereno {
+	font-family: 'Tengwar Hereno';
+	font-size: 38px;
+}
+.elfic-caslon {
+	font-family: 'Elfic Caslon';
+	font-size: 44px;
+}
+.tengwar-gothika {
+	font-family: 'Tengwar Gothika';
+	font-size: 40px;
+}
+.greifswalder-tengwar {
+	font-family: 'Greifswalder Tengwar';
+	font-size: 44px;
+}
+.tengwar-optime {
+	font-family: 'Tengwar Optime';
+	font-size: 38px;
+}
+.cirth-erebor {
+	font-family: 'Cirth Erebor';
+	font-size: 16px;
+}
+.cirth-erebor-cap {
+	font-family: 'Cirth Erebor Cap2';
+	font-size: 16px;
+}
+.cirth-erebor-1 {
+	font-family: 'Cirth Erebor 1';
+	font-size: 16px;
+}
+.cirth-erebor-2 {
+	font-family: 'Cirth Erebor 2';
+	font-size: 16px;
+}
+
+.script-prev {
+	padding-top: 10px;
+	padding-left: 5px;
+}
+
+.cirth-prev {
+	padding-top: 20px;
+	padding-left: 5px;
+}
+
+mark.alt, mark.cap, mark.cap-vowel {
+	padding: 0;
+}
+
+@media (max-width: 992px) {
+
+	.scripts-label {
+		padding-top: 5px;
+		padding-bottom: 10px;
+	}
+
+	.form-group-lang {
+		margin-bottom: 0px;
+	}
+
+	.label p, .form-check-label p {
+		margin-bottom: 0px;
+	}
+
+	.hint {
+		padding-top: 0px;
+		padding-bottom: 5px;
+		padding-left: 18px;
+	}
+}
+
+@media only screen 
+  and (max-device-width: 600px) {
+	.label p {
+		font-size: 2.5em;
+	}
+
+	.form-control {
+		font-size: 3em;
+	}
+
+	select.form-control:not([size]):not([multiple]) {
+		height: 80px;
+	}
+
+	.select-div select option {
+		font-size: 14px;
+	}
+
+	input.form-check-input {
+		width: 60px;
+		height: 60px;
+	}
+
+	.form-check-label p {
+		padding-left: 50px;
+		padding-top: 10px;
+		padding-bottom: 20px;
+		font-size: 2.2em;
+	}
+
+	tr.script-row, tr.script-row td div {
+		height: 150px;
+	}
+
+	td.col4 p {
+		font-size: 1.8em;
+		white-space: normal;
+	}
+
+	td.col1 {
+		width: 70px;
+	}
+
+	td.col2 {
+		width: 100px;
+	}
+
+	td.col3 {
+		width: 400px;
+	}
+
+	.tengwar-annatar {
+		font-size: 60px;
+	}
+	.tengwar-annatar-alt {
+		font-size: 60px;
+	}
+	.tengwar-annatar-bold {
+		font-size: 60px;
+	}
+	.tengwar-annatar-alt-bold {
+		font-size: 60px;
+	}
+	.tengwar-annatar-italic {
+		font-size: 60px;
+	}
+	.tengwar-annatar-alt-italic {
+		font-size: 60px;
+	}
+	.tengwar-annatar-bold-italic {
+		font-size: 60px;
+	}
+	.tengwar-annatar-alt-bold-italic {
+		font-size: 60px;
+	}
+	.tengwar-noldor {
+		font-size: 60px;
+	}
+	.tengwar-noldor-cap {
+		font-size: 60px;
+	}
+	.tengwar-quenya {
+		font-size: 60px;
+	}
+	.tengwar-quenya-cap {
+		font-size: 60px;
+	}
+	.tengwar-sindarin {
+		font-size: 60px;
+	}
+	.tengwar-sindarin-cap {
+		font-size: 60px;
+	}
+	.tengwar-beleriand {
+		font-size: 60px;
+	}
+	.tengwar-elfica {
+		font-size: 60px;
+	}
+	.tengwar-formal {
+		font-size: 104px;
+	}
+	.tengwar-cursive {
+		font-size: 180px;
+	}
+	.tengwar-parmaite {
+		font-size: 96px;
+	}
+	.tengwar-eldamar {
+		font-size: 68px;
+	}
+	.tengwar-eldamar-alt {
+		font-size: 68px;
+	}
+	.tengwar-galvorn {
+		font-size: 52px;
+	}
+	.tengwar-mornedhel {
+		font-size: 52px;
+	}
+	.tengwar-telerin {
+		font-size: 88px;
+	}
+	.tengwar-hereno {
+		font-size: 76px;
+	}
+	.elfic-caslon {
+		font-size: 88px;
+	}
+	.tengwar-gothika {
+		font-size: 80px;
+	}
+	.greifswalder-tengwar {
+		font-size: 88px;
+	}
+	.tengwar-optime {
+		font-size: 76px;
+	}
+	.cirth-erebor {
+		font-size: 32px;
+	}
+	.cirth-erebor-cap {
+		font-size: 32px;
+	}
+	.cirth-erebor-1 {
+		font-size: 32px;
+	}
+	.cirth-erebor-2 {
+		font-size: 32px;
+	}
+
+}
+

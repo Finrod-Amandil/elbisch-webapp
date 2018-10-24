@@ -17,11 +17,11 @@ The Index view (home page)
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "index"; ?>
+		<?php $page = "about"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		
-		<title>elbisch.ch - Startseite</title>
+		<title>elbisch.ch - Bestellübersicht</title>
 		
 	</head>
 
@@ -38,7 +38,7 @@ The Index view (home page)
 			<div class="row justify-content-center">
 				<div id="container-outer" class="container-outer col-sm-12 col-md-12 col-lg-8">
 					<div class="container-inner">
-						<h1>Welcome!</h1>
+						<h1>Meine Bestellungen!</h1>
 					</div>
 				</div>
 			</div>
