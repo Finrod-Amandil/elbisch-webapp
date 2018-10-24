@@ -1,2 +1,4 @@
 RewriteEngine on
+RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png|ttf)$ [NC]
 RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
+RewriteRule ^static/[^/]+//(.+)$ $1  [L]
