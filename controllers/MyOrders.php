@@ -11,7 +11,7 @@ Controller for OrderForm view.
 
 class MyOrders extends Controller {
 	public static function CreateView($viewName) {
-		if (false) {
+		if (true) {
 			require_once("./views/$viewName.php");
 		}
 		else {

@@ -2,14 +2,15 @@
 <?php
 
 /*
-file: Index.php
+file: MyOrders.php
 author: Severin Zahler, Nadine Seiler
 history:
 - 2018-10-03: Severin Zahler: added file
 - 2018-10-03: Nadine Seiler: added basic template
+- 2018-10-24: Nadine Seiler: finished all fields according to mockup
 
 summary:
-The Index view (home page)
+The view of orders a customer has made
 */
 
 ?>
@@ -38,7 +39,19 @@ The Index view (home page)
 			<div class="row justify-content-center">
 				<div id="container-outer" class="container-outer col-sm-12 col-md-12 col-lg-8">
 					<div class="container-inner">
-						<h1>Meine Bestellungen!</h1>
+						<div class="title title-margin">Meine Bestellungen</div>
+						<div class="container-order row">
+							<div class="col-xl-6 col-lg-6">
+								<p><span class="text-bold">Bestellnummer:</span> 18023</p>
+								<p><span class="text-bold">Aufgabedatum:</span> 19.09.2018</p>
+								<p><span class="text-bold">Status:</span> <span class="text-progress">In Bearbeitung</span></p>
+							</div>
+							<div class="col-xl-6 col-lg-6">
+								<p><span class="text-bold">Auftragsart:</span> Übersetzung</p>
+								<p><span class="text-bold">Sprache:</span> Quenya</p>
+								<p><span class="text-bold">Text:</span> Not all those who wander are lost</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
