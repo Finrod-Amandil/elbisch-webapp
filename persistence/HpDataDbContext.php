@@ -40,6 +40,32 @@ class HpDataDbContext extends DbContext {
 		
 		return $retArr;
 	}
+	
+	public function addOrder($order) {
+		if (!is_a($order, 'Order')) {
+			return;
+		}
+		
+		$name = $this->dbConnection->real_escape_string($order->name);
+		$email = $this->dbConnection->real_escape_string($order->email);
+		$orderType = $this->dbConnection->real_escape_string($order->orderType);
+		$languages = $this->dbConnection->real_escape_string($order->languages);
+		$fonts = $this->dbConnection->real_escape_string($order->fonts);
+		$orderDescription = $this->dbConnection->real_escape_string($order->orderDescription);
+		$derivation = $order->derivation ? 1 : 0;
+		$offer = $order->offer ? 1 : 0;
+		$gallery = $order->gallery ? 1 : 0;
+		$payment = $this->dbConnection->real_escape_string($order->payment);
+		$currency = $this->dbConnection->real_escape_string($order->currency);
+		$comments = $this->dbConnection->real_escape_string($order->comments);
+		
+		$query = "INSERT INTO orders (name, email, order_type, languages, fonts, order_description, derivation, offer, gallery, payment, currency, comments, status) 
+			VALUES ('" . $name . "', '" . $email . "', '" .  $orderType . "', '" . $languages . "', 
+			'" . $fonts . "', '" . $orderDescription . "', " . $derivation . ", " . $offer . ", " . $gallery . ",
+			'" . $payment . "', '" . $currency . "', '" . $comments . "', 'PENDING')";
+			
+		$this->query($query);
+	}
 
 	private function mapOrder($dbEntryRow) {
 		$order = new Order();
@@ -59,7 +85,7 @@ class HpDataDbContext extends DbContext {
 		$order->gallery = $dbEntryRow['gallery'];
 		$order->payment = $dbEntryRow['payment'];
 		$order->currency = $dbEntryRow['currency'];
-		$order->comment = $dbEntryRow['comment'];
+		$order->comments = $dbEntryRow['comments'];
 		$order->status = $dbEntryRow['status'];
 		$order->lastChange = $dbEntryRow['last_change'];
 		

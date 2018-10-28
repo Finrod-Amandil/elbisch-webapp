@@ -17,7 +17,7 @@ class Order {
 	public $gallery = false;
 	public $payment = '';
 	public $currency = '';
-	public $comment = '';
+	public $comments = '';
 	public $status = '';
 	public $lastChange = '';
 	
