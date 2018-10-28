@@ -41,4 +41,9 @@ Route::set('logout', function() {
 	LoginController::Logout();
 });
 
+Route::set('submit-order', function() {
+	OrderFormController::Submit();
+});
+
+
 ?>

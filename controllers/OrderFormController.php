@@ -10,5 +10,7 @@ Controller for OrderForm view.
 */
 
 class OrderFormController extends Controller {}
-
+	public static function Submit() {
+		
+	}
 ?>

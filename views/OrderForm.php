@@ -14,6 +14,13 @@ The Index view (home page)
 */
 
 ?>
+
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+	session_regenerate_id();
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -94,14 +101,14 @@ The Index view (home page)
 					<div class="container-inner">
 						<div class="title title-margin">Anfrageformular</div>
 						
-						<form class="orderform">
+						<form class="orderform" method="post" action="./submit-order">
 							<div class="elements-container">
 								<div class="row">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Name</p>
 									</div>
 									<div class="col-xl-4 col-lg-5">
-										<input class="form-control" type="text" id="input-name">
+										<input class="form-control" type="text" name="name" id="input-name">
 									</div>
 									<div class="col-xl-5 col-lg-3 hint">
 										<p>Optional, nur für die Anrede</p>
@@ -112,7 +119,14 @@ The Index view (home page)
 										<p>E-mail <span class="required">*</span></p>
 									</div>
 									<div class="col-xl-5 col-lg-5">
-										<input class="form-control" type="text" id="input-name">
+										<?php
+										if (isset($_SESSION["logged_in"])) {
+											echo('<input disabled value="' . $_SESSION["username"] . '" class="form-control" type="text" name="email" id="input-email">');
+										}
+										else {
+											echo('<input class="form-control" type="text" name="email" id="input-email">');
+										}
+										?>
 									</div>
 								</div>
 								<div class="row">
@@ -120,12 +134,12 @@ The Index view (home page)
 										<p>Auftragstyp <span class="required">*</span></p>
 									</div>
 									<div class="col-xl-5 col-lg-5 select-div">
-										<select class="form-control" id="conlang">
+										<select class="form-control" id="conlang" name="order_type">
 										    <option value="0" class="none-selected">- Bitte auswählen -</option>
-										    <option value="1">Übersetzung + Transkription</option>
-										    <option value="2">Transkription</option>
-										    <option value="3">Übersetzung</option>
-										    <option value="4">Andere Frage</option>
+										    <option value="translation-transcription">Übersetzung + Transkription</option>
+										    <option value="transcription">Transkription</option>
+										    <option value="translation">Übersetzung</option>
+										    <option value="other">Andere Frage</option>
 										</select>
 									</div>
 								</div>
@@ -136,13 +150,13 @@ The Index view (home page)
 									<div class="form-group col-xl-2 col-lg-3 form-group-lang">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id="checkbox-quenya" value="q">
+												<input type="checkbox" class="form-check-input" id="checkbox-quenya" value="quenya" name="language_quenya">
 												<p>Quenya</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id=" checkbox-sindarin" value="s">
+												<input type="checkbox" class="form-check-input" id=" checkbox-sindarin" value="sindarin" name="language_sindarin">
 												<p>Sindarin</p>
 											</label>
 										</div>
@@ -164,9 +178,10 @@ The Index view (home page)
 												<th></th>
 												<th></th>
 											</tr>
+											
 											<tr id="row-tengwar-annatar" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-annatar');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-annatar');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar" value="tengwar-annatar" name="script_tengwar-annatar">
 												</td>
 												<td class="col2">
 												</td>
@@ -181,9 +196,10 @@ The Index view (home page)
 													<p class="hint">Tengwar Annatar</p>
 												</td>
 											</tr>
+											
 											<tr id="row-tengwar-annatar-bold" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-annatar-bold');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-bold" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-annatar-bold');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-bold" value="tengwar-annatar-bold" name="script_tengwar-annatar-bold">
 												</td>
 												<td class="col2">
 												</td>
@@ -198,9 +214,10 @@ The Index view (home page)
 													<p class="hint">Tengwar Annatar bold</p>
 												</td>
 											</tr>
+											
 											<tr id="row-tengwar-annatar-italic" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-annatar-italic');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-italic" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-annatar-italic');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-italic" value="tengwar-annatar-italic" name="script_tengwar-annatar-italic">
 												</td>
 												<td class="col2">
 												</td>
@@ -215,9 +232,10 @@ The Index view (home page)
 													<p class="hint">Tengwar Annatar italic</p>
 												</td>
 											</tr>
+											
 											<tr id="row-tengwar-annatar-bold-italic" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-annatar-bold-italic');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-bold-italic" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-annatar-bold-italic');" class="form-check-input checkbox-script" id="checkbox-tengwar-annatar-bold-italic" value="tengwar-annatar-bold-italic" name="script_tengwar-annatar-bold-italic">
 												</td>
 												<td class="col2">
 												</td>
@@ -232,12 +250,13 @@ The Index view (home page)
 													<p class="hint">Tengwar Annatar bold italic</p>
 												</td>
 											</tr>
+											
 											<tr id="row-tengwar-noldor" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-noldor');" class="form-check-input checkbox-script" id="checkbox-tengwar-noldor" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-noldor');" class="form-check-input checkbox-script" id="checkbox-tengwar-noldor" value="tengwar-noldor" name="script_tengwar-noldor">
 												</td>
 												<td class="col2">
-													<input type="checkbox" onclick="setCap('tengwar-noldor');" class="form-check-input checkbox-cap" id="checkbox-tengwar-noldor-cap" value="">
+													<input type="checkbox" onclick="setCap('tengwar-noldor');" class="form-check-input checkbox-cap" id="checkbox-tengwar-noldor-cap" value="tengwar-noldor-caps" name="script_tengwar-noldor-caps">
 												</td>
 												<td class="col3">
 													<div>
@@ -250,12 +269,13 @@ The Index view (home page)
 													<p class="hint">Tengwar Noldor</p>
 												</td>
 											</tr>
+											
 											<tr id="row-tengwar-quenya" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-quenya');" class="form-check-input checkbox-script" id="checkbox-tengwar-quenya" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-quenya');" class="form-check-input checkbox-script" id="checkbox-tengwar-quenya" value="tengwar-quenya" name="script_tengwar-quenya">
 												</td>
 												<td class="col2">
-													<input type="checkbox" onclick="setCap('tengwar-quenya');" class="form-check-input checkbox-cap" id="checkbox-tengwar-quenya-cap" value="">
+													<input type="checkbox" onclick="setCap('tengwar-quenya');" class="form-check-input checkbox-cap" id="checkbox-tengwar-quenya-cap" value="tengwar-quenya-caps" name="script_tengwar-quenya-caps">
 												</td>
 												<td class="col3">
 													<div>
@@ -270,10 +290,10 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-sindarin" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-sindarin');" class="form-check-input checkbox-script" id="checkbox-tengwar-sindarin" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-sindarin');" class="form-check-input checkbox-script" id="checkbox-tengwar-sindarin" value="tengwar-sindarin" name="script_tengwar-sindarin">
 												</td>
 												<td class="col2">
-													<input type="checkbox" onclick="setCap('tengwar-sindarin');" class="form-check-input checkbox-cap" id="checkbox-tengwar-sindarin-cap" value="">
+													<input type="checkbox" onclick="setCap('tengwar-sindarin');" class="form-check-input checkbox-cap" id="checkbox-tengwar-sindarin-cap" value="tengwar-sindarin-caps" name="script_tengwar-sindarin-caps">
 												</td>
 												<td class="col3">
 													<div>
@@ -288,7 +308,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-beleriand" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-beleriand');" class="form-check-input checkbox-script" id="checkbox-tengwar-beleriand" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-beleriand');" class="form-check-input checkbox-script" id="checkbox-tengwar-beleriand" value="tengwar-beleriand" name="script_tengwar-beleriand">
 												</td>
 												<td class="col2">
 												</td>
@@ -305,7 +325,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-elfica" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-elfica');" class="form-check-input checkbox-script" id="checkbox-tengwar-elfica" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-elfica');" class="form-check-input checkbox-script" id="checkbox-tengwar-elfica" value="tengwar-elfica" name="script_tengwar-elfica">
 												</td>
 												<td class="col2">
 												</td>
@@ -322,7 +342,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-formal" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-formal');" class="form-check-input checkbox-script" id="checkbox-tengwar-formal" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-formal');" class="form-check-input checkbox-script" id="checkbox-tengwar-formal" value="tengwar-formal" name="script_tengwar-formal">
 												</td>
 												<td class="col2">
 												</td>
@@ -337,24 +357,9 @@ The Index view (home page)
 													<p class="hint">Tengwar Formal</p>
 												</td>
 											</tr>
-											<!--<tr id="row-tengwar-cursive" class="script-row">
-												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-cursive');" class="form-check-input checkbox-script" id="checkbox-tengwar-cursive" value="">
-												</td>
-												<td class="col2">
-												</td>
-												<td class="col3">
-													<p class="script-prev">
-														<mark id="mark-tengwar-cursive" class="tengwar-cursive">5%v$j^1F+ y~N7F`C</mark>
-													</p>
-												</td>
-												<td class="col4">
-													<p class="hint">Tengwar Cursive</p>
-												</td>
-											</tr>-->
 											<tr id="row-tengwar-parmaite" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-parmaite');" class="form-check-input checkbox-script" id="checkbox-tengwar-parmaite" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-parmaite');" class="form-check-input checkbox-script" id="checkbox-tengwar-parmaite" value="tengwar-parmaite" name="script_tengwar-parmaite">
 												</td>
 												<td class="col2">
 												</td>
@@ -371,7 +376,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-eldamar" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-eldamar');" class="form-check-input checkbox-script" id="checkbox-tengwar-eldamar" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-eldamar');" class="form-check-input checkbox-script" id="checkbox-tengwar-eldamar" value="tengwar-eldamar" name="script_tengwar-eldamar">
 												</td>
 												<td class="col2">
 												</td>
@@ -388,7 +393,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-galvorn" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-galvorn');" class="form-check-input checkbox-script" id="checkbox-tengwar-galvorn" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-galvorn');" class="form-check-input checkbox-script" id="checkbox-tengwar-galvorn" value="tengwar-galvorn" name="script_tengwar-galvorn">
 												</td>
 												<td class="col2">
 												</td>
@@ -405,7 +410,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-mornedhel" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-mornedhel');" class="form-check-input checkbox-script" id="checkbox-tengwar-mornedhel" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-mornedhel');" class="form-check-input checkbox-script" id="checkbox-tengwar-mornedhel" value="tengwar-mornedhel" name="script_tengwar-mornedhel">
 												</td>
 												<td class="col2">
 												</td>
@@ -422,7 +427,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-telerin" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-telerin');" class="form-check-input checkbox-script" id="checkbox-tengwar-telerin" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-telerin');" class="form-check-input checkbox-script" id="checkbox-tengwar-telerin" value="tengwar-telerin" name="script_tengwar-telerin">
 												</td>
 												<td class="col2">
 												</td>
@@ -439,7 +444,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-hereno" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-hereno');" class="form-check-input checkbox-script" id="checkbox-tengwar-hereno" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-hereno');" class="form-check-input checkbox-script" id="checkbox-tengwar-hereno" value="tengwar-hereno" name="script_tengwar-hereno">
 												</td>
 												<td class="col2">
 												</td>
@@ -456,7 +461,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-elfic-caslon" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('elfic-caslon');" class="form-check-input checkbox-script" id="checkbox-elfic-caslon" value="">
+													<input type="checkbox" onclick="selectScript('elfic-caslon');" class="form-check-input checkbox-script" id="checkbox-elfic-caslon" value="elfic-caslon" name="script_elfic-caslon">
 												</td>
 												<td class="col2">
 												</td>
@@ -473,7 +478,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-gothika" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-gothika');" class="form-check-input checkbox-script" id="checkbox-tengwar-gothika" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-gothika');" class="form-check-input checkbox-script" id="checkbox-tengwar-gothika" value="tengwar-gothika" name="script_tengwar-gothika">
 												</td>
 												<td class="col2">
 												</td>
@@ -490,7 +495,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-greifswalder-tengwar" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('greifswalder-tengwar');" class="form-check-input checkbox-script" id="checkbox-greifswalder-tengwar" value="">
+													<input type="checkbox" onclick="selectScript('greifswalder-tengwar');" class="form-check-input checkbox-script" id="checkbox-greifswalder-tengwar" value="greifswalder-tengwar" name="script_greifswalder-tengwar">
 												</td>
 												<td class="col2">
 												</td>
@@ -507,7 +512,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-tengwar-optime" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('tengwar-optime');" class="form-check-input checkbox-script" id="checkbox-tengwar-optime" value="">
+													<input type="checkbox" onclick="selectScript('tengwar-optime');" class="form-check-input checkbox-script" id="checkbox-tengwar-optime" value="tengwar-optime" name="script_tengwar-optime">
 												</td>
 												<td class="col2">
 												</td>
@@ -524,10 +529,10 @@ The Index view (home page)
 											</tr>
 											<tr id="row-cirth-erebor" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('cirth-erebor');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor" value="">
+													<input type="checkbox" onclick="selectScript('cirth-erebor');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor" value="cirth-erebor" name="script_cirth-erebor">
 												</td>
 												<td class="col2">
-													<input type="checkbox" onclick="setCap('cirth-erebor');" class="form-check-input checkbox-cap" id="checkbox-cirth-erebor-cap" value="">
+													<input type="checkbox" onclick="setCap('cirth-erebor');" class="form-check-input checkbox-cap" id="checkbox-cirth-erebor-cap" value="cirth-erebor-caps" name="script_cirth-erebor-caps">
 												</td>
 												<td class="col3">
 													<div>
@@ -542,7 +547,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-cirth-erebor-1" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('cirth-erebor-1');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor-1" value="">
+													<input type="checkbox" onclick="selectScript('cirth-erebor-1');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor-1" value="cirth-erebor-1" name="script_cirth-erebor-1">
 												</td>
 												<td class="col2">
 												</td>
@@ -559,7 +564,7 @@ The Index view (home page)
 											</tr>
 											<tr id="row-cirth-erebor-2" class="script-row">
 												<td class="col1">
-													<input type="checkbox" onclick="selectScript('cirth-erebor-2');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor-2" value="">
+													<input type="checkbox" onclick="selectScript('cirth-erebor-2');" class="form-check-input checkbox-script" id="checkbox-cirth-erebor-2" value="cirth-erebor-2" name="script_cirth-erebor-2">
 												</td>
 												<td class="col2">
 												</td>
@@ -582,7 +587,7 @@ The Index view (home page)
 										<p>Auftrag / Text <span class="required">*</span></p>
 									</div>
 									<div class="col-xl-7 col-lg-8">
-										<textarea class="form-control" id="input-text"></textarea>
+										<textarea rows="5" class="form-control" id="input-text" name="order-description"></textarea>
 									</div>
 								</div>
 								<div class="row">
@@ -592,13 +597,13 @@ The Index view (home page)
 									<div class="col-xl-8 col-lg-7">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id="checkbox-origin" value="or">
+												<input type="checkbox" class="form-check-input" id="checkbox-derivation" value="extra_derivation" name="extra_derivation">
 												<p>Herleitung</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id=" checkbox-offer" value="of">
+												<input type="checkbox" class="form-check-input" id=" checkbox-offer" value="extra_offer" name="extra_offer">
 												<p>Offerte</p>
 											</label>
 										</div>
@@ -611,7 +616,7 @@ The Index view (home page)
 									<div class="col-xl-5 col-lg-5">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id="checkbox-gallery" value="g">
+												<input type="checkbox" class="form-check-input" id="checkbox-gallery" value="gallery" name="gallery">
 											</label>
 										</div>
 										</div>
@@ -624,13 +629,13 @@ The Index view (home page)
 									<div class="col-xl-8 col-lg-7 pad-top-7">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id="checkbox-online" value="on">
+												<input type="radio" class="form-check-input" id="checkbox-online" value="payment_e-banking" name="payment_e-banking">
 												<p>Online-Überweisung (E-Banking)</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id=" checkbox-paypal" value="pp">
+												<input type="radio" class="form-check-input" id=" checkbox-paypal" value="payment_paypal" name="payment_paypal">
 												<p>PayPal (Kreditkarte)</p>
 											</label>
 										</div>
@@ -643,13 +648,13 @@ The Index view (home page)
 									<div class="col-xl-8 col-lg-7 pad-top-7">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id="checkbox-chf" value="chf">
+												<input type="radio" class="form-check-input" id="checkbox-chf" value="currency_chf" name="currency_chf">
 												<p>CHF - Schweizer Franken</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id=" checkbox-eur" value="eur">
+												<input type="radio" class="form-check-input" id=" checkbox-eur" value="currency_eur" name="currency_eur">
 												<p>€ - Euro</p>
 											</label>
 										</div>
@@ -659,9 +664,9 @@ The Index view (home page)
 									<div class="col-xl-9 col-lg-9">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id="checkbox-disclaimer" value="d">
-												<p>Ich habe die <a href="./terms">Geschäftsbedingungen</a> gelesen und akzeptiert. 
-												Zudem habe ich den <a href="./course">Elbisch-Crashkurs</a> gelesen und verstanden. <span class="required">*</span></p>
+												<input type="checkbox" class="form-check-input" id="checkbox-disclaimer" value="accept_terms" name="accept_terms">
+												<p>Ich habe die <a href="./terms" target="_blank">Geschäftsbedingungen</a> gelesen und akzeptiert. 
+												Zudem habe ich den <a href="./course" target="_blank">Elbisch-Crashkurs</a> gelesen und verstanden. <span class="required">*</span></p>
 											</label>
 										</div>
 									</div>
@@ -671,13 +676,13 @@ The Index view (home page)
 										<p>Bemerkungen<span class="required">*</span></p>
 									</div>
 									<div class="col-xl-7 col-lg-8">
-										<textarea class="form-control" id="input-text"></textarea>
+										<textarea rows="4" class="form-control" id="input-text" name="comments"></textarea>
 									</div>
 								</div>	
 								
 								<div class="btn-submit pad-top-20">
 									<div class="col-xl-12 col-lg-12">	
-										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="button">Auftrag aufgeben</button>
+										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag aufgeben</button>
 									</div>
 								</div>
 							</div>	
