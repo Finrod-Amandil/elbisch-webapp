@@ -36,7 +36,8 @@ if (session_status() == PHP_SESSION_NONE) {
 			})
 			
 			function selectScript(id){
-				if (document.getElementById('checkbox-' + id).checked) {
+				if (document.getElementById('checkbox-' + id).checked ||
+				    (document.getElementById('checkbox-' + id + "-cap") != null && document.getElementById('checkbox-' + id + "-cap").checked)) {
 					document.getElementById('row-' + id).style.background = "rgba(255,255,255,0.5)";
 				}
 				else {
@@ -46,11 +47,9 @@ if (session_status() == PHP_SESSION_NONE) {
 			
 			function setCap(id){
 				var list = document.getElementById('mark-' + id).children
+				selectScript(id);
 				
 				if (document.getElementById('checkbox-' + id + "-cap").checked) {
-					document.getElementById('checkbox-' + id).checked = true;
-					selectScript(id);
-
 					var i;
 					for (i = 0; i < list.length; i++) {
 						var el = list[i];
@@ -137,8 +136,8 @@ if (session_status() == PHP_SESSION_NONE) {
 										<select class="form-control" id="conlang" name="order_type">
 										    <option value="0" class="none-selected">- Bitte auswählen -</option>
 										    <option value="translation-transcription">Übersetzung + Transkription</option>
-										    <option value="transcription">Transkription</option>
-										    <option value="translation">Übersetzung</option>
+										    <option value="transcription">Nur Transkription</option>
+										    <option value="translation">Nur Übersetzung</option>
 										    <option value="other">Andere Frage</option>
 										</select>
 									</div>
@@ -165,7 +164,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										<p>Ich empfehle dir, dich für eine Sprache zu entscheiden und nicht beide anzuwählen, ausser du brauchst wirklich die Übersetzung in beide Sprachen.</p>
 									</div>
 								</div>
-								<div class="row" id="row-lang">
+								<div class="row" id="row-script">
 									<div class="col-lg-3 label scripts-label">
 										<p>Schriftarten <span class="required">*</span></p>
 									</div>
@@ -611,12 +610,12 @@ if (session_status() == PHP_SESSION_NONE) {
 								</div>
 								<div class="row">
 									<div class="col-xl-5 col-lg-6 label">
-										<p>Mein Auftrag darf in der Gallerie ausgestellt werden?</p>
+										<p>Mein Auftrag darf in der Galerie ausgestellt werden</p>
 									</div>
 									<div class="col-xl-5 col-lg-5">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="checkbox" class="form-check-input" id="checkbox-gallery" value="gallery" name="gallery">
+												<input type="checkbox" checked class="form-check-input" id="checkbox-gallery" value="gallery" name="gallery">
 											</label>
 										</div>
 										</div>
@@ -629,13 +628,13 @@ if (session_status() == PHP_SESSION_NONE) {
 									<div class="col-xl-8 col-lg-7 pad-top-7">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id="checkbox-online" value="payment_e-banking" name="payment_e-banking">
+												<input type="radio" class="form-check-input" id="checkbox-online" value="e-banking" name="payment">
 												<p>Online-Überweisung (E-Banking)</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id=" checkbox-paypal" value="payment_paypal" name="payment_paypal">
+												<input type="radio" class="form-check-input" id=" checkbox-paypal" value="paypal" name="payment">
 												<p>PayPal (Kreditkarte)</p>
 											</label>
 										</div>
@@ -648,13 +647,13 @@ if (session_status() == PHP_SESSION_NONE) {
 									<div class="col-xl-8 col-lg-7 pad-top-7">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id="checkbox-chf" value="currency_chf" name="currency_chf">
+												<input type="radio" class="form-check-input" id="checkbox-chf" value="chf" name="currency">
 												<p>CHF - Schweizer Franken</p>
 											</label>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
-												<input type="radio" class="form-check-input" id=" checkbox-eur" value="currency_eur" name="currency_eur">
+												<input type="radio" class="form-check-input" id=" checkbox-eur" value="eur" name="currency">
 												<p>€ - Euro</p>
 											</label>
 										</div>
@@ -676,13 +675,13 @@ if (session_status() == PHP_SESSION_NONE) {
 										<p>Bemerkungen<span class="required">*</span></p>
 									</div>
 									<div class="col-xl-7 col-lg-8">
-										<textarea rows="4" class="form-control" id="input-text" name="comments"></textarea>
+										<textarea rows="4" class="form-control" id="input-comments" name="comments"></textarea>
 									</div>
 								</div>	
 								
 								<div class="btn-submit pad-top-20">
 									<div class="col-xl-12 col-lg-12">	
-										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag aufgeben</button>
+										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag kostenpflichtig und verbindlich aufgeben</button>
 									</div>
 								</div>
 							</div>	
