@@ -7,6 +7,7 @@ author: Severin Zahler, Nadine Seiler
 history:
 - 2018-10-03: Severin Zahler: added file
 - 2018-10-03: Nadine Seiler: added basic template
+- 2018-10-24: Nadine Seiler: finished all fields and design
 
 summary:
 The Index view (home page)
@@ -96,30 +97,27 @@ The Index view (home page)
 						<form class="orderform">
 							<div class="elements-container">
 								<div class="row">
-									<div class="col-xl-2 col-lg-3 label">
+									<div class="col-xl-3 col-lg-4 label">
 										<p>Name</p>
 									</div>
 									<div class="col-xl-4 col-lg-5">
 										<input class="form-control" type="text" id="input-name">
 									</div>
-									<div class="col-xl-6 col-lg-4 hint">
+									<div class="col-xl-5 col-lg-3 hint">
 										<p>Optional, nur für die Anrede</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xl-2 col-lg-3 label">
-										<p>E-mail<span class="required">*</span></p>
+									<div class="col-xl-3 col-lg-4 label">
+										<p>E-mail <span class="required">*</span></p>
 									</div>
-									<div class="col-xl-4 col-lg-5">
+									<div class="col-xl-5 col-lg-5">
 										<input class="form-control" type="text" id="input-name">
-									</div>
-									<div class="col-xl-6 col-lg-4 hint">
-										<p>Wird für die weitere Kommunikation verwendet</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xl-2 col-lg-3 label">
-										<p>Auftragstyp<span class="required">*</span></p>
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Auftragstyp <span class="required">*</span></p>
 									</div>
 									<div class="col-xl-5 col-lg-5 select-div">
 										<select class="form-control" id="conlang">
@@ -132,8 +130,8 @@ The Index view (home page)
 									</div>
 								</div>
 								<div class="row" id="row-lang">
-									<div class="col-xl-2 col-lg-3 label">
-										<p>Sprache<span class="required">*</span></p>
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Sprache <span class="required">*</span></p>
 									</div>
 									<div class="form-group col-xl-2 col-lg-3 form-group-lang">
 										<div class="row checkbox-row">
@@ -149,16 +147,16 @@ The Index view (home page)
 											</label>
 										</div>
 									</div>
-									<div class="col-xl-8 col-lg-6 hint">
+									<div class="col-xl-7 col-lg-5 hint">
 										<p>Ich empfehle dir, dich für eine Sprache zu entscheiden und nicht beide anzuwählen, ausser du brauchst wirklich die Übersetzung in beide Sprachen.</p>
 									</div>
 								</div>
 								<div class="row" id="row-lang">
-									<div class="col-lg-2 label scripts-label">
-										<p>Schriftarten<span class="required">*</span></p>
+									<div class="col-lg-3 label scripts-label">
+										<p>Schriftarten <span class="required">*</span></p>
 									</div>
 									
-									<div class="col-lg-10">
+									<div class="col-lg-9">
 										<table class="script-table">
 											<tr>
 												<th></th>
@@ -580,21 +578,110 @@ The Index view (home page)
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xl-2 col-lg-3 label">
-										<p>Auftrag / Text<span class="required">*</span></p>
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Auftrag / Text <span class="required">*</span></p>
 									</div>
-									<div class="col-xl-8 col-lg-8">
+									<div class="col-xl-7 col-lg-8">
 										<textarea class="form-control" id="input-text"></textarea>
 									</div>
 								</div>
-							</div>
-
-							<div class="btn-submit">
-								<button class="btn btn-secondary btn-lg btn-block" id="submit" type="button">Auftrag aufgeben</button>
-							</div>
+								<div class="row">
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Zusatzangebote</p>
+									</div>
+									<div class="col-xl-8 col-lg-7">
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" id="checkbox-origin" value="or">
+												<p>Herleitung</p>
+											</label>
+										</div>
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" id=" checkbox-offer" value="of">
+												<p>Offerte</p>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-5 col-lg-6 label">
+										<p>Mein Auftrag darf in der Gallerie ausgestellt werden?</p>
+									</div>
+									<div class="col-xl-5 col-lg-5">
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" id="checkbox-gallery" value="g">
+											</label>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div id="container_payment" class="row">
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Bezahlungsart <span class="required">*</span></p>
+									</div>
+									<div class="col-xl-8 col-lg-7 pad-top-7">
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="radio" class="form-check-input" id="checkbox-online" value="on">
+												<p>Online-Überweisung (E-Banking)</p>
+											</label>
+										</div>
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="radio" class="form-check-input" id=" checkbox-paypal" value="pp">
+												<p>PayPal (Kreditkarte)</p>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Währung der Rechnung <span class="required">*</span></p>
+									</div>
+									<div class="col-xl-8 col-lg-7 pad-top-7">
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="radio" class="form-check-input" id="checkbox-chf" value="chf">
+												<p>CHF - Schweizer Franken</p>
+											</label>
+										</div>
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="radio" class="form-check-input" id=" checkbox-eur" value="eur">
+												<p>€ - Euro</p>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-9 col-lg-9">
+										<div class="row checkbox-row">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-check-input" id="checkbox-disclaimer" value="d">
+												<p>Ich habe die <a href="./terms">Geschäftsbedingungen</a> gelesen und akzeptiert. 
+												Zudem habe ich den <a href="./course">Elbisch-Crashkurs</a> gelesen und verstanden. <span class="required">*</span></p>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-3 col-lg-4 label">
+										<p>Bemerkungen<span class="required">*</span></p>
+									</div>
+									<div class="col-xl-7 col-lg-8">
+										<textarea class="form-control" id="input-text"></textarea>
+									</div>
+								</div>	
+								
+								<div class="btn-submit pad-top-20">
+									<div class="col-xl-12 col-lg-12">	
+										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="button">Auftrag aufgeben</button>
+									</div>
+								</div>
+							</div>	
 						</form>
-						
-					
 					</div>
 				</div>
 			</div>

@@ -131,6 +131,19 @@
     src: url('../fonts/cirth-erebor-2.ttf') format('truetype');
 }
 
+#container_payment {
+	padding-bottom: 15px;
+}
+
+.pad-top-7 {
+	padding-top: 7px;
+}
+
+.pad-top-20 {
+	padding-top: 20px;
+}
+
+
 @media (max-width: 1400px) {
 	.container-inner {
 		width: 90%
@@ -157,6 +170,11 @@ div.hint p {
 	font-weight: bold;
 }
 
+.btn-submit {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+	
 .required {
 	color: red;
 }
