@@ -9,6 +9,6 @@ summary:
 Controller for Index view.
 */
 
-class Index extends Controller {}
+class IndexController extends Controller {}
 
 ?>

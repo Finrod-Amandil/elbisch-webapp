@@ -9,6 +9,6 @@ summary:
 Controller for OrderForm view.
 */
 
-class OrderForm extends Controller {}
+class OrderFormController extends Controller {}
 
 ?>
