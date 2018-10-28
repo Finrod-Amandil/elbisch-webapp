@@ -17,6 +17,10 @@ class LoginController extends Controller {
 		$canAuthenticate = $dbContext->tryLogin($email, $password);
 		
 		if ($canAuthenticate) {
+			session_start();
+			session_regenerate_id();
+			$_SESSION["logged_in"] = true;
+			$_SESSION["username"] = $email;
 			$loginMessage = "Sie wurden erfolgreich eingeloggt!";
 		}
 		else {
@@ -51,10 +55,23 @@ class LoginController extends Controller {
 		}
 		else {
 			$dbContext->registerNewUser($email, $password);
+			session_start();
+			session_regenerate_id();
+			$_SESSION["logged_in"] = true;
+			$_SESSION["username"] = $email;
 			$registerMessage = "Registrierung erfolgreich!";
 		}
 		
 		require_once("./views/Register.php");
+	}
+	
+	public static function Logout() {
+		session_start();
+		$_SESSION = array();
+		session_destroy();
+		
+		$logoutMessage = "Sie wurden erfolgreich abgemeldet.";
+		require_once("./views/Logout.php");
 	}
 }
 

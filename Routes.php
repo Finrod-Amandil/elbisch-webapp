@@ -37,4 +37,8 @@ Route::set('register', function() {
 	LoginController::Register();
 });
 
+Route::set('logout', function() {
+	LoginController::Logout();
+});
+
 ?>
