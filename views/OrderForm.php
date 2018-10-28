@@ -31,9 +31,36 @@ if (session_status() == PHP_SESSION_NONE) {
 		<link rel="stylesheet" type="text/css" href="static/css/styles-orderform.css">
 		
 		<script type="text/javascript">
-			$(function () {
-			  $('[data-toggle="popover"]').popover()
-			})
+			function toggleFormElements() {
+				var selectElement = document.getElementById('select_conlang');
+				var value = selectElement[selectElement.selectedIndex].value;
+				
+				[...document.getElementsByClassName("show-always")].forEach(function(element) {
+					element.style.display = "none";
+				});
+				[...document.getElementsByClassName('show-translation')].forEach(function(element) {
+					element.style.display = "none";
+				});
+				[...document.getElementsByClassName('show-transcription')].forEach(function(element) {
+					element.style.display = "none";
+				});
+				
+				if (value !== "0") {
+					[...document.getElementsByClassName('show-always')].forEach(function(element) {
+						element.style.display = "flex";
+					});
+				}
+				if (value.includes("translation")) {
+					[...document.getElementsByClassName('show-translation')].forEach(function(element) {
+						element.style.display = "flex";
+					});
+				}
+				if (value.includes("transcription")) {
+					[...document.getElementsByClassName('show-transcription')].forEach(function(element) {
+						element.style.display = "flex";
+					});
+				}
+			}
 			
 			function selectScript(id){
 				if (document.getElementById('checkbox-' + id).checked ||
@@ -133,7 +160,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										<p>Auftragstyp <span class="required">*</span></p>
 									</div>
 									<div class="col-xl-5 col-lg-5 select-div">
-										<select class="form-control" id="conlang" name="order_type">
+										<select class="form-control" id="select_conlang" name="order_type" onchange="toggleFormElements();">
 										    <option value="0" class="none-selected">- Bitte auswählen -</option>
 										    <option value="translation-transcription">Übersetzung + Transkription</option>
 										    <option value="transcription">Nur Transkription</option>
@@ -142,7 +169,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</select>
 									</div>
 								</div>
-								<div class="row" id="row-lang">
+								<div class="row show-translation" id="row-lang" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Sprache <span class="required">*</span></p>
 									</div>
@@ -160,11 +187,8 @@ if (session_status() == PHP_SESSION_NONE) {
 											</label>
 										</div>
 									</div>
-									<div class="col-xl-7 col-lg-5 hint">
-										<p>Ich empfehle dir, dich für eine Sprache zu entscheiden und nicht beide anzuwählen, ausser du brauchst wirklich die Übersetzung in beide Sprachen.</p>
-									</div>
 								</div>
-								<div class="row" id="row-script">
+								<div class="row show-transcription" id="row-script" style="display:none">
 									<div class="col-lg-3 label scripts-label">
 										<p>Schriftarten <span class="required">*</span></p>
 									</div>
@@ -581,7 +605,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</table>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Auftrag / Text <span class="required">*</span></p>
 									</div>
@@ -589,7 +613,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										<textarea rows="5" class="form-control" id="input-text" name="order-description"></textarea>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Zusatzangebote</p>
 									</div>
@@ -608,7 +632,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-5 col-lg-6 label">
 										<p>Mein Auftrag darf in der Galerie ausgestellt werden</p>
 									</div>
@@ -621,7 +645,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</div>
 									</div>
 								</div>
-								<div id="container_payment" class="row">
+								<div id="container_payment" class="row show-always" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Bezahlungsart <span class="required">*</span></p>
 									</div>
@@ -640,7 +664,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Währung der Rechnung <span class="required">*</span></p>
 									</div>
@@ -659,7 +683,7 @@ if (session_status() == PHP_SESSION_NONE) {
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-9 col-lg-9">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
@@ -670,9 +694,9 @@ if (session_status() == PHP_SESSION_NONE) {
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row show-always" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
-										<p>Bemerkungen<span class="required">*</span></p>
+										<p>Bemerkungen</p>
 									</div>
 									<div class="col-xl-7 col-lg-8">
 										<textarea rows="4" class="form-control" id="input-comments" name="comments"></textarea>
@@ -681,7 +705,7 @@ if (session_status() == PHP_SESSION_NONE) {
 								
 								<div class="btn-submit pad-top-20">
 									<div class="col-xl-12 col-lg-12">	
-										<button class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag kostenpflichtig und verbindlich aufgeben</button>
+										<button disabled class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag kostenpflichtig und verbindlich aufgeben</button>
 									</div>
 								</div>
 							</div>	

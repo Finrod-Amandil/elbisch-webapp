@@ -11,9 +11,7 @@ class UsersDbContext extends DbContext {
 		try {
 			$this->connect();
 		}
-		catch (Exception $e) {
-			//echo 'Error occurred while connecting to database ' . $this->dbName . ': ' . $e->getMessage() . '\n';
-		}
+		catch (Exception $e) {}
 	}
 	
 	public function getUserByUserName($userLoginName) {
@@ -21,7 +19,6 @@ class UsersDbContext extends DbContext {
 		$rs = $this->query("SELECT * FROM users WHERE email LIKE '" .  $userLoginName . "';");
 		
 		if ($rs->num_rows != 1) {
-			//echo("No single entry found for login name " . $userLoginName . ".");
 			return null;
 		}
 		else 
@@ -40,12 +37,10 @@ class UsersDbContext extends DbContext {
 	public function registerNewUser($email, $password) {
 		if (!isset($email) or
 		    !isset($password)) {
-			//echo("Incomplete user data. Did not create new user.");
 			return;
 		}
 		
 		if ($this->isUserRegistered($email)) {
-			//echo("A user with the login name " . $email . " already exists.");
 			return;
 		}
 		
@@ -62,7 +57,6 @@ class UsersDbContext extends DbContext {
 	public function tryLogin($email, $password) {
 		if (!isset($email) or
 		    !isset($password)) {
-			//echo("Incomplete user data. Could not look up user.");
 			return false;
 		}
 		
