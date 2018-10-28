@@ -10,23 +10,31 @@ Defines which Controller/Action method specific routes map to.
 */
 
 Route::set('index.php', function() {
-	Index::CreateView('Index');
+	IndexController::CreateView('Index');
 });
 
 Route::set('orderform', function() {
-	OrderForm::CreateView('OrderForm');
+	OrderFormController::CreateView('OrderForm');
 });
 
 Route::set('orderform.php', function() {
-	OrderForm::CreateView('OrderForm');
+	OrderFormController::CreateView('OrderForm');
 });
 
 Route::set('myorders', function() {
-	MyOrders::CreateView('MyOrders');
+	MyOrdersController::CreateView('MyOrders');
 });
 
 Route::set('myorders.php', function() {
-	MyOrders::CreateView('MyOrders');
+	MyOrdersController::CreateView('MyOrders');
+});
+
+Route::set('login', function() {
+	LoginController::Login();
+});
+
+Route::set('register', function() {
+	LoginController::Register();
 });
 
 ?>
