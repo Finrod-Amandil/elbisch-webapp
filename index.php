@@ -10,7 +10,7 @@ Redirect target for all requests from the webapp. Loads all class required for r
 in order to redirect request to correct controller.
 */
 
-require_once('Routes.php');
+require_once("./routing/Routes.php");
 
 function __autoload($class_name) {
 	if (file_exists('./routing/'.$class_name.'.php')) {
