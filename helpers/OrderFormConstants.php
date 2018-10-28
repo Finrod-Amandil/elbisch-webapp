@@ -11,6 +11,11 @@ public static SCRIPT_NAMES =
 		  "tengwar-eldamar", "tengwar-galvorn", "tengwar-mornedhel", "tengwar-telerin", "tengwar-hereno",
 		  "elfic-caslon", "tengwar-gothika", "greifswalder-tengwar", "tengwar-optime", "cirth-erebor",
 		  "cirth-erebor-caps", "cirth-erebor-1", "cirth-erebor-2");
+		  
+public static EXTRA_NAMES = array("derivation", "offer");
 
+public static PAYMENT_NAMES = array("e-banking", "paypal");
+
+public static CURRENCY_NAMES = array("chf", "eur");
 
 ?>
