@@ -95,20 +95,103 @@ The navigation bar partial view shared across all views.
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="./guestbook">
-					<div class="lg-only"><br></div>
-					Gästebuch
-				</a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link" href="./contact">
 					<div class="lg-only"><br></div>
 					Kontakt
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="modal" data-target="#login">
+					<div class="lg-only"><br></div>
+					Login
+				</a>
+			</li>
 		</ul>
 	</div>
 </nav>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login_dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content content-container">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="login_dialog">Login</h4>
+			</div>
+			<form method="post" action="./login">
+				<div class="modal-body">
+					Bitte geben Sie ihre Login-Daten ein.
+					<div class="row">
+						<div class="col-xs-4">
+							<p>E-mail</p>
+						</div>
+						<div class="col-xs-8">
+							<input type="text" name="email" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<p>Passwort</p>
+						</div>
+						<div class="col-xs-8">
+							<input type="password" name="password" />
+						</div>
+					</div>
+					<div class="row">
+						<p>Noch keinen Account? <a data-toggle="modal" data-target="#register" data-dismiss="modal">Registrieren</a></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="Login"  class="btn" />
+					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register_dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content content-container">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="login_dialog">Registrieren</h4>
+			</div>
+			<form method="post" action="./register">
+				<div class="modal-body">
+					Bitte geben Sie ihre Login-Daten ein.
+					<div class="row">
+						<div class="col-xs-4">
+							<p>E-mail</p>
+						</div>
+						<div class="col-xs-8">
+							<input type="text" name="email" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<p>Passwort</p>
+						</div>
+						<div class="col-xs-8">
+							<input type="password" name="password" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<p>Passwort wiederholen</p>
+						</div>
+						<div class="col-xs-8">
+							<input type="password" name="password_2" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="Registrieren"  class="btn" />
+					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <script type="text/javascript">
 	$('ul.navbar-nav li.dropdown').hover(
