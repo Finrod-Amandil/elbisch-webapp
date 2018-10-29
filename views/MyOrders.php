@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <?php
-
 /*
-file: MyOrders.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Severin Zahler: added file
-- 2018-10-03: Nadine Seiler: added basic template
-- 2018-10-24: Nadine Seiler: finished all fields according to mockup
-
-summary:
-The view of orders a customer has made
-*/
-
+ * file: views/MyOrders.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-24: Severin Zahler: added file
+ * - 2018-10-24: Nadine Seiler: finished all fields according to mockup
+ *
+ * summary:
+ * The view of orders a customer has made
+ */
 ?>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "about"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		

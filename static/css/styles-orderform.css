@@ -130,6 +130,17 @@
     font-family: 'Cirth Erebor 2';
     src: url('../fonts/cirth-erebor-2.ttf') format('truetype');
 }
+/*
+ * file: static/css/styles-orderform.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-24: Severin Zahler: added file
+ * - 2018-10-24: Nadine Seiler: added styles for remaining fields of order form.
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary:
+ * CSS styles for the OrderForm view.
+ */
 
 #container_payment {
 	padding-bottom: 15px;

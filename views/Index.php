@@ -2,22 +2,20 @@
 <?php
 
 /*
-file: Index.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Severin Zahler: added file
-- 2018-10-03: Nadine Seiler: added basic template
-
-summary:
-The Index view (home page)
-*/
-
+ * file: views/Index.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-03: Severin Zahler: added file
+ * - 2018-10-03: Nadine Seiler: added basic template
+ * 
+ * summary:
+ * The Index view (home page) (Stub)
+ */
 ?>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "index"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		
@@ -46,8 +44,5 @@ The Index view (home page)
 			<!-- Footer -->
 			<?php include 'views/common/footer.php'; ?>
 		</div>
-
-		
 	</body>
-
 </html>

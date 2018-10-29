@@ -1,10 +1,25 @@
 <?php
 
+/**
+ * file: persistence/HpDataDbContext.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-27: Severin Zahler: added class
+ * - 2018-10-28: Severin Zahler: added addOrder function.
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary: Abstraction of Homepage-Data-Database access.
+ */
+
 require_once('./models/Order.php');
 require_once('./persistence/DbContext.php');
 
 class HpDataDbContext extends DbContext {
 
+	/**
+	 * Initializes a new DbContext with the connection data of the
+	 * homepage-data DB and connects to it.
+	 */
 	public function __construct() {
 		parent::__construct('localhost', 'webuser', 'superSecurePassword', 'elbisch-webapp_hp-data');
 		
@@ -16,6 +31,9 @@ class HpDataDbContext extends DbContext {
 		}
 	}
 	
+	/**
+	 * Loads and returns all orders from the database as Order instances.
+	 */
 	public function getAllOrders() {
 		$rs = $this->query("SELECT * FROM orders;");
 		
@@ -28,6 +46,9 @@ class HpDataDbContext extends DbContext {
 		return $retArr;
 	}
 	
+	/**
+	 * Loads all orders that have been submitted by the user with the given login name.
+	 */
 	public function getAllOrdersByUser($userLoginName) {
 		$userLoginName = $this->dbConnection->real_escape_string($userLoginName);
 		$rs = $this->query("SELECT * FROM orders WHERE email LIKE '" .  $userLoginName . "';");
@@ -41,6 +62,9 @@ class HpDataDbContext extends DbContext {
 		return $retArr;
 	}
 	
+	/*
+	 * Saves a new order to the database.
+	 */
 	public function addOrder($order) {
 		if (!is_a($order, 'Order')) {
 			return;
@@ -67,6 +91,9 @@ class HpDataDbContext extends DbContext {
 		$this->query($query);
 	}
 
+	/**
+	 * Creates an Order object from one entry of the resultset of the DB.
+	 */
 	private function mapOrder($dbEntryRow) {
 		$order = new Order();
 		$order->id = $dbEntryRow['id_order'];

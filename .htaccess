@@ -1,3 +1,13 @@
+# file: views/common/navbar.php
+# author: Severin Zahler, Nadine Seiler
+# history:
+# - 2018-10-03: Severin Zahler: added file
+# - 2018-10-24: Severin Zahler: added conditions for static files
+# - 2018-10-29: Nadine Seiler: updated comments
+#
+# summary:
+# Redirects all requests except the ones to static files to index.php
+
 RewriteEngine on
 RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png|ttf)$ [NC]
 RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]

@@ -1,13 +1,13 @@
 <?php
 /*
-file: resources-common.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Nadine Seiler: added file
-
-summary:
-HTML dependencies shared across all views.
-*/
+ * file: views/common/resources-common.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-03: Nadine Seiler: added file
+ * 
+ * summary:
+ * HTML dependencies shared across all views.
+ */
 ?>
 <link rel="icon" type="image/png" href="static/img/favicon.ico">
 

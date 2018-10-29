@@ -1,13 +1,17 @@
 <?php
 /*
-file: navbar.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Nadine Seiler: added file
-
-summary:
-The navigation bar partial view shared across all views.
-*/
+ * file: views/common/navbar.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-03: Nadine Seiler: added file
+ * - 2018-10-27: Severin Zahler: added dialogs for Login and Registration
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary:
+ * The navigation bar partial view shared across all views. Also contains
+ * the dialogs for login and registration. Menu items change depending on
+ * whether user is logged in or not.
+ */
 ?>
 
 <?php 
@@ -17,9 +21,12 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 ?>
 <nav class="container-fluid navbar navbar-toggleable-md navbar-light bg-faded">
+	<!-- Button to toggle navbar for small screens -->
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
+	
+	<!-- Branding in top left corner with language switches -->
 	<div class="navbar-brand-div">
 		<div class="row">
 			<img class="avatar" src="static/img/avatar.png" alt="">
@@ -30,6 +37,7 @@ if (session_status() == PHP_SESSION_NONE) {
 		</div>
 	</div>
 
+	<!-- Navigation items -->
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item">
@@ -78,6 +86,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				</a>
 			</li>
 			<?php if (!isset($_SESSION["logged_in"])) {
+			//Login menu item only shown if user is logged out.
 			echo('<li class="nav-item">');
 				echo('<a class="nav-link" data-toggle="modal" data-target="#login">');
 					echo('<div class="lg-only"><br></div>');
@@ -87,6 +96,7 @@ if (session_status() == PHP_SESSION_NONE) {
 			
 			} else {
 			
+			//If user is logged in, Logout and MyOrders links are shown.
 			echo('<li class="nav-item">');
 				echo('<a class="nav-link" href="./myorders">');
 					echo('Meine');
@@ -107,6 +117,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 </nav>
 
+<!-- Modal dialog for login -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login_dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content content-container">
@@ -134,6 +145,7 @@ if (session_status() == PHP_SESSION_NONE) {
 						</div>
 					</div>
 					<div class="row">
+						<!-- Register link closes this modal and opens another one -->
 						<p>Noch keinen Account? <a data-toggle="modal" data-target="#register" data-dismiss="modal">Registrieren</a></p>
 					</div>
 				</div>
@@ -146,6 +158,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 </div>
 
+<!-- Modal dialog for registration -->
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register_dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content content-container">
@@ -191,37 +204,12 @@ if (session_status() == PHP_SESSION_NONE) {
 </div>
 
 <script type="text/javascript">
+	//Dropdown menu opens when hovered over.
 	$('ul.navbar-nav li.dropdown').hover(
 	function() { //when mouse is over element
 	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
 	}, 
 	function() { //when mouse is no longer over element
 	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	});
-
-	$('mark.lang-de').click(
-	function() {
-		var path = window.location.pathname;
-		if (path.substring(path.length - 1) == "/") {
-			path = path + "index";
-		}
-		if (path.indexOf(".php") == -1) {
-			path = path + ".php";
-		}
-		path = path + "?lang=de";
-		window.location.href = path;
-	});
-	
-	$('mark.lang-en').click(
-	function() {
-		var path = window.location.pathname;
-		if (path.substring(path.length - 1) == "/") {
-			path = path + "index";
-		}
-		if (path.indexOf(".php") == -1) {
-			path = path + ".php";
-		}
-		path = path + "?lang=en";
-		window.location.href = path;
 	});
 </script>

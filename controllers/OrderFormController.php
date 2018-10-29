@@ -1,19 +1,28 @@
 <?php
 /*
-file: Index.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-23: Severin Zahler: added class
-
-summary:
-Controller for OrderForm view.
-*/
+ * file: controllers/OrderFormController.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-24: Severin Zahler: added class
+ * - 2018-10-27: Nadine Seiler: renamed file and class from OrderForm to OrderFormController.
+ * - 2018-10-28: Severin Zahler: Added validation and saving of OrderForm data.
+ * - 2018-10-29: Nadine Seiler: updated comments
+ * 
+ * summary: Controller for OrderForm view. Handles the
+ *          input from the order form.
+ */
 
 require_once("./helpers/OrderFormConstants.php");
 require_once("./models/Order.php");
 require_once("./persistence/HpDataDbContext.php");
 
 class OrderFormController extends Controller {
+	
+	/*
+	 * Handles the order form when it is being submitted.
+	 * Validates all input and writes it to the database if
+	 * valid.
+	 */
 	public static function Submit() {
 		
 		$name = isset($_POST["name"]) ? $_POST["name"] : '';
@@ -76,6 +85,7 @@ class OrderFormController extends Controller {
 		
 		$comments = isset($_POST["comments"]) ? $_POST["comments"] : '';
 		
+		//Build new order object
 		$order = new Order();
 		$order->name = $name;
 		$order->email = $email;
@@ -90,6 +100,7 @@ class OrderFormController extends Controller {
 		$order->currency = $currency;
 		$order->comments = $comments;
 		
+		//save to database
 		$dbContext = new HpDataDbContext();
 		$dbContext->addOrder($order);
 		

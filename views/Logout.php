@@ -1,9 +1,20 @@
 <!DOCTYPE html>
+<?php
+/*
+ * file: views/Logout.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-27: Severin Zahler: added file
+ * - 2018-10-29: Nadine Seiler: updated comments
+ * 
+ * summary:
+ * The Logout view which displays feedback from the Logout process.
+ */
+?>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "logout"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		

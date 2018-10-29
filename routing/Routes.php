@@ -1,13 +1,19 @@
 <?php
 /*
-file: Routes.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Severin Zahler: added class
-
-summary:
-Defines which Controller/Action method specific routes map to.
-*/
+ * file: routing/Routes.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-03: Severin Zahler: added class
+ * - 2018-10-03: Severin Zahler: added routes for OrderForm and MyOrders views
+ * - 2018-10-27: Nadine Seiler: Added routes for login and register
+ * - 2018-10-28: Nadine Seiler: Added route for Logout
+ * - 2018-10-28: Nadine Seiler: Added route for form submit
+ * - 2018-10-28: Severin Zahler: Moved file to routing folder.
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary:
+ * Defines which Controller/Action method specific routes map to.
+ */
 
 Route::set('index.php', function() {
 	IndexController::CreateView('Index');

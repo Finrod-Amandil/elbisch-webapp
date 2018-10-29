@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * file: helpers/OrderFormConstants.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-28: Nadine Seiler: added class
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary: Lists names of grouped input elements of the
+ *          order form as arrays for easier evaluation.
+ */
 class OrderFormConstants {
 
 	public const ORDER_TYPE_NAMES = array("translation-transcription", "transcription", "translation", "other");

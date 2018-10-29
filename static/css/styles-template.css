@@ -1,3 +1,14 @@
+/*
+ * file: static/css/styles-template.css
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-03: Nadine Seiler: added file
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary:
+ * Styles for view template including navigation and footer.
+ */
+
 body {
 	padding-top: 100px;
 }

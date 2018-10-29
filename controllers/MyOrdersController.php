@@ -1,18 +1,26 @@
 <?php
 /*
-file: Index.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-23: Severin Zahler: added class
-
-summary:
-Controller for OrderForm view.
+ * file: controllers/MyOrdersController.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-24: Severin Zahler: added class
+ * - 2018-10-27: Severin Zahler: Renamed file from MyOrders to MyOrdersController
+ * - 2018-10-27: Severin Zahler: Added script for testing DB access
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary: Controller for OrderForm view.
 */
 
 require_once("./persistence/HpDataDbContext.php");
 require_once("./models/Order.php");
 
 class MyOrdersController extends Controller {
+	
+	/*
+	 * Override of the default Controller::CreateView action.
+	 * Checks whether the user is logged and then loads the
+	 * orders of that user to display them.
+	 */
 	public static function CreateView($viewName) {
 		if (true) {
 			

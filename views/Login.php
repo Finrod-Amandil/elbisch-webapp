@@ -1,9 +1,20 @@
 <!DOCTYPE html>
+<?php
+/*
+ * file: views/Login.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-27: Severin Zahler: added file
+ * - 2018-10-29: Nadine Seiler: updated comments
+ *
+ * summary:
+ * The Login view which displays feedback from the Login process.
+ */
+?>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "login"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		

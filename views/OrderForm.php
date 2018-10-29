@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <?php
-
 /*
-file: Index.php
-author: Severin Zahler, Nadine Seiler
-history:
-- 2018-10-03: Severin Zahler: added file
-- 2018-10-03: Nadine Seiler: added basic template
-- 2018-10-24: Nadine Seiler: finished all fields and design
-
-summary:
-The Index view (home page)
-*/
+ * file: views/OrderForm.php
+ * author: Severin Zahler, Nadine Seiler
+ * history:
+ * - 2018-10-24: Severin Zahler: added file
+ * - 2018-10-24: Nadine Seiler: finished all fields and design
+ * - 2018-10-27: Nadine Seiler: small fixes for data submission
+ * - 2018-10-28: Severin Zahler: Added script for toggling fields with dependant visibility.
+ * - 2018-10-29: Nadine Seiler: updated comments.
+ *
+ * summary:
+ * The order form view.
+ */
 
 ?>
 
 <?php 
+//Session is required as email is filled out automatically if user is logged in.
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 	session_regenerate_id();
@@ -26,15 +28,17 @@ if (session_status() == PHP_SESSION_NONE) {
 	<head>
 		<meta charset="utf-8" />
 		
-		<?php $page = "orderform"; ?>
 		<?php include 'views/common/resources-common.php'; ?>
 		<link rel="stylesheet" type="text/css" href="static/css/styles-orderform.css">
 		
 		<script type="text/javascript">
+			//Shows and hides form sections depending on order type selection.
 			function toggleFormElements() {
+				//Get selected value from order type select
 				var selectElement = document.getElementById('select_conlang');
 				var value = selectElement[selectElement.selectedIndex].value;
 				
+				//Hide all toggleable elements
 				[...document.getElementsByClassName("show-always")].forEach(function(element) {
 					element.style.display = "none";
 				});
@@ -45,11 +49,14 @@ if (session_status() == PHP_SESSION_NONE) {
 					element.style.display = "none";
 				});
 				
+				//If any selection was made, show fields marked as "show-always"
 				if (value !== "0") {
 					[...document.getElementsByClassName('show-always')].forEach(function(element) {
 						element.style.display = "flex";
 					});
 				}
+				
+				//Show translation and/or transcription related elements, according to selection.
 				if (value.includes("translation")) {
 					[...document.getElementsByClassName('show-translation')].forEach(function(element) {
 						element.style.display = "flex";
@@ -62,6 +69,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				}
 			}
 			
+			//Toggles highlighting of selected scripts
 			function selectScript(id){
 				if (document.getElementById('checkbox-' + id).checked ||
 				    (document.getElementById('checkbox-' + id + "-cap") != null && document.getElementById('checkbox-' + id + "-cap").checked)) {
@@ -72,6 +80,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				}
 			}
 			
+			//Toggles cap / no-cap font display on fonts with that option.
 			function setCap(id){
 				var list = document.getElementById('mark-' + id).children
 				selectScript(id);
@@ -107,7 +116,6 @@ if (session_status() == PHP_SESSION_NONE) {
 			}
 		</script>
 		
-		
 		<title>elbisch.ch - Anfrageformular</title>
 		
 	</head>
@@ -127,6 +135,7 @@ if (session_status() == PHP_SESSION_NONE) {
 					<div class="container-inner">
 						<div class="title title-margin">Anfrageformular</div>
 						
+						<!-- FORM BEGIN -->
 						<form class="orderform" method="post" action="./submit-order">
 							<div class="elements-container">
 								<div class="row">
@@ -146,6 +155,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									</div>
 									<div class="col-xl-5 col-lg-5">
 										<?php
+										//If user is logged in, fill out email adress automatically and lock field.
 										if (isset($_SESSION["logged_in"])) {
 											echo('<input disabled value="' . $_SESSION["username"] . '" class="form-control" type="text" name="email" id="input-email">');
 										}
@@ -169,6 +179,8 @@ if (session_status() == PHP_SESSION_NONE) {
 										</select>
 									</div>
 								</div>
+								
+								<!-- BEYOND HERE: INVISIBLE BY DEFAULT! Toggled by script connected to select above. -->
 								<div class="row show-translation" id="row-lang" style="display:none">
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Sprache <span class="required">*</span></p>
@@ -703,6 +715,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									</div>
 								</div>	
 								
+								<!-- Submit button -->
 								<div class="btn-submit pad-top-20">
 									<div class="col-xl-12 col-lg-12">	
 										<button disabled class="btn btn-secondary btn-lg btn-block" id="submit" type="submit">Auftrag kostenpflichtig und verbindlich aufgeben</button>
