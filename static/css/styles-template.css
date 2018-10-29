@@ -176,6 +176,11 @@ mark.lg-only {
 	cursor: hand;
 }
 
+.validation-error {
+	color:red;
+	display: none;
+}
+
 @media (max-width: 1200px) {
 	.navbar-brand {
 		font-size: 1.5em;

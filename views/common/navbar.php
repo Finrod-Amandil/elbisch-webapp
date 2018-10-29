@@ -6,6 +6,7 @@
  * - 2018-10-03: Nadine Seiler: added file
  * - 2018-10-27: Severin Zahler: added dialogs for Login and Registration
  * - 2018-10-29: Nadine Seiler: updated comments
+ * - 2018-10-29: Severin Zahler: Added front-end validation for Login.
  *
  * summary:
  * The navigation bar partial view shared across all views. Also contains
@@ -117,6 +118,56 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 </nav>
 
+<!-- Front-end validation for login -->
+<script type="text/javascript">
+	function validateLoginForm() {
+		var emailValue = document.getElementById("input_login_email").value;
+		var emailErrorSpan = document.getElementById("validation_error_login_email");
+		
+		var passwordValue = document.getElementById("input_login_password").value;
+		var passwordErrorSpan = document.getElementById("validation_error_input_password");
+		
+		var isFormValid = true;
+		
+		emailErrorSpan.style.display = "none";
+		passwordErrorSpan.style.display = "none";
+		
+		if (isEmpty(emailValue)) {
+			isFormValid = false;
+			emailErrorSpan.style.display = "block";
+			emailErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"E-Mail\" aus.";
+		}
+		else if (!isValidEmail(emailValue)) {
+			isFormValid = false;
+			emailErrorSpan.style.display = "block";
+			emailErrorSpan.innerHTML = "Die E-Mail-Adresse ist ungültig.";
+		}
+		
+		if (isEmpty(passwordValue)) {
+			isFormValid = false;
+			passwordErrorSpan.style.display = "block";
+			passwordErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"Passwort\" aus.";
+		}
+		
+		if (isFormValid) {
+			var form = document.getElementById("form_login");
+			form.submit();
+		}
+	}
+	
+	
+	function isEmpty(str) 
+	{
+		return (!str || 0 === str.length);
+	}
+	
+	function isValidEmail(email) 
+	{
+		var regex = /\S+@\S+\.\S+/;
+		return regex.test(email);
+	}
+</script>
+
 <!-- Modal dialog for login -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login_dialog">
 	<div class="modal-dialog" role="document">
@@ -125,7 +176,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="login_dialog">Login</h4>
 			</div>
-			<form method="post" action="./login">
+			<form id="form_login" method="post" action="./login">
 				<div class="modal-body">
 					Bitte geben Sie ihre Login-Daten ein.
 					<div class="row">
@@ -133,7 +184,9 @@ if (session_status() == PHP_SESSION_NONE) {
 							<p>E-mail</p>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" name="email" />
+							<input id="input_login_email" type="text" name="email" />
+							<br>
+							<span id="validation_error_login_email" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
@@ -141,7 +194,9 @@ if (session_status() == PHP_SESSION_NONE) {
 							<p>Passwort</p>
 						</div>
 						<div class="col-xs-8">
-							<input type="password" name="password" />
+							<input id="input_login_password" type="password" name="password" />
+							<br>
+							<span id="validation_error_input_password" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
@@ -150,7 +205,7 @@ if (session_status() == PHP_SESSION_NONE) {
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" value="Login"  class="btn" />
+					<button type="button" class="btn btn-default" onclick="validateLoginForm();">Login</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</form>
@@ -166,7 +221,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="login_dialog">Registrieren</h4>
 			</div>
-			<form method="post" action="./register">
+			<form id="form_register" method="post" action="./register">
 				<div class="modal-body">
 					Bitte geben Sie ihre Login-Daten ein.
 					<div class="row">
@@ -174,7 +229,9 @@ if (session_status() == PHP_SESSION_NONE) {
 							<p>E-mail</p>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" name="email" />
+							<input id="input_register_email" type="text" name="email" />
+							<br>
+							<span id="validation_error_register_emil" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
@@ -182,7 +239,9 @@ if (session_status() == PHP_SESSION_NONE) {
 							<p>Passwort</p>
 						</div>
 						<div class="col-xs-8">
-							<input type="password" name="password" />
+							<input id="input_register_password" type="password" name="password" />
+							<br>
+							<span id="validation_error_register_password" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
@@ -190,7 +249,9 @@ if (session_status() == PHP_SESSION_NONE) {
 							<p>Passwort wiederholen</p>
 						</div>
 						<div class="col-xs-8">
-							<input type="password" name="password_2" />
+							<input id="input_register_password2" type="password" name="password_2" />
+							<br>
+							<span id="validation_error_register_password2" class="validation-error"></span>
 						</div>
 					</div>
 				</div>
