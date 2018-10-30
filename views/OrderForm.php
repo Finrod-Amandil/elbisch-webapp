@@ -808,12 +808,14 @@ if (session_status() == PHP_SESSION_NONE) {
 												<input type="checkbox" class="form-check-input" id="checkbox-derivation" value="extra_derivation" name="extra_derivation">
 												<p>Herleitung</p>
 											</label>
+											<a class="btn btn-secondary btn-block button-info" data-toggle="modal" data-target="#dialog_derivation">?</a>
 										</div>
 										<div class="row checkbox-row">
 											<label class="form-check-label">
 												<input type="checkbox" class="form-check-input" id=" checkbox-offer" value="extra_offer" name="extra_offer">
 												<p>Offerte</p>
 											</label>
+											<a class="btn btn-secondary btn-block button-info" data-toggle="modal" data-target="#dialog_offer">?</a>
 										</div>
 									</div>
 								</div>
@@ -826,7 +828,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<label class="form-check-label">
 												<input type="checkbox" class="form-check-input" id="checkbox-gallery" value="gallery" name="gallery">
 											</label>
-										</div>
+											<a class="btn btn-secondary btn-block button-info" data-toggle="modal" data-target="#dialog_gallery">?</a>
 										</div>
 									</div>
 								</div>
@@ -900,6 +902,60 @@ if (session_status() == PHP_SESSION_NONE) {
 								</div>
 							</div>	
 						</form>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal dialog for derivation info -->
+			<div class="modal fade" id="dialog_derivation" tabindex="-1" role="dialog" aria-labelledby="dialog_derivation">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content content-container">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="login_dialog">Herleitung</h4>
+						</div>
+						<div class="modal-body">
+							Wenn du dieses Zusatzangebot auswählst erhältst du sehr detaillierte Ausführungen dazu, wie deine Übersetzung bzw. Transkription zustande gekommen ist.
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal dialog for offer info -->
+			<div class="modal fade" id="dialog_offer" tabindex="-1" role="dialog" aria-labelledby="dialog_derivation">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content content-container">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="login_dialog">Herleitung</h4>
+						</div>
+						<div class="modal-body">
+							Wenn du dieses Zusatzangebot auswählst wird vor der Bearbeitung eine Offerte erstellt, die du ablehnen oder annehmen kannst. Damit kannst du sicherstellen, dass dein Auftrag dein Budget nicht sprengen wird. Dies wird nur für grosse Aufträge (längere Texte) empfohlen.
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal dialog for gallery info -->
+			<div class="modal fade" id="dialog_gallery" tabindex="-1" role="dialog" aria-labelledby="dialog_derivation">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content content-container">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="login_dialog">Herleitung</h4>
+						</div>
+						<div class="modal-body">
+							Wenn du dies auswählst, wird die für dich angefertigte Übersetzung und Transkription in der <a href="./gallery" class="dialog-link" target="_blank">Galerie</a> ausgestellt. Dadurch sind keine Rückschlüsse auf deine Person möglich, alle anderen Daten von dir werden streng vertraulich behandelt.
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+						</div>
 					</div>
 				</div>
 			</div>
