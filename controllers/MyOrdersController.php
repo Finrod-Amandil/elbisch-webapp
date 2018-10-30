@@ -26,6 +26,9 @@ class MyOrdersController extends Controller {
 			
 			$dbContext = new HpDataDbContext();
 			$orders = $dbContext->getAllOrdersByUser("severin.zahler@gmail.com");
+			
+			require_once("./views/$viewName.php");
+			
 			foreach ($orders as $order) {
 				echo($order->id . '<br>');
 				echo($order->date . '<br>');
@@ -43,12 +46,12 @@ class MyOrdersController extends Controller {
 				echo($order->gallery . '<br>');
 				echo($order->payment . '<br>');
 				echo($order->currency . '<br>');
-				echo($order->comment . '<br>');
+				echo($order->comments . '<br>');
 				echo($order->status . '<br>');
 				echo($order->lastChange . '<br>');
 			}
 			
-			//require_once("./views/$viewName.php");
+			
 		}
 		else {
 			require_once("./views/NotFound.php");

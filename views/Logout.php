@@ -16,7 +16,6 @@
 		<meta charset="utf-8" />
 		
 		<?php include 'views/common/resources-common.php'; ?>
-		<link rel="stylesheet" type="text/css" href="static/css/styles-index.css">
 		
 		<title>elbisch.ch - Logout</title>
 		

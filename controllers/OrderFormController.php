@@ -29,7 +29,7 @@ class OrderFormController extends Controller {
 		
 		if (!isset($_POST["email"]) or 
 		    !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-			$orderSubmitMessage = "Anfrage konnte nicht gespeichert werden: Ungültige E-mail Adresse";
+			$orderSubmitMessage = "Anfrage konnte nicht gespeichert werden: Ungültige E-Mail Adresse";
 			require_once("./views/OrderSubmitted.php");
 			return;
 		}
