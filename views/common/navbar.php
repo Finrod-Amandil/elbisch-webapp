@@ -7,6 +7,7 @@
  * - 2018-10-27: Severin Zahler: added dialogs for Login and Registration
  * - 2018-10-29: Nadine Seiler: updated comments
  * - 2018-10-29: Severin Zahler: Added front-end validation for Login.
+ * - 2018-10-30: Severin Zahler: Added front-end validation for Registration.
  *
  * summary:
  * The navigation bar partial view shared across all views. Also contains
