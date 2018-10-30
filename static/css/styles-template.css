@@ -29,22 +29,6 @@ mark.lg-only {
 	min-height: 900px;
 }
 
-.container-order {
-	border: 4px solid tan;
-	border-radius: 15px;
-	background: rgba(255,255,255,0.5);
-	padding-top: 10px;
-}
-
-.text-bold {
-	font-weight: bold;
-}
-
-.text-progress {
-	font-weight: bold;
-	color: orange;
-}	
-
 @media (min-width: 991px) {
 	.bg-left {
 		background-image: url("../img/bg-left.png");
