@@ -85,6 +85,12 @@ class OrderFormController extends Controller {
 		
 		$comments = isset($_POST["comments"]) ? $_POST["comments"] : '';
 		
+		if (!isset($_POST["accept_terms"])) {
+			$orderSubmitMessage = "Anfrage konnte nicht gespeichert werden: Die Geschäftsbedingungen wurden nicht akzeptiert.";
+			require_once("./views/OrderSubmitted.php");
+			return;
+		}
+		
 		//Build new order object
 		$order = new Order();
 		$order->name = $name;
