@@ -8,12 +8,14 @@
  * - 2018-10-27: Severin Zahler: Added script for testing DB access
  * - 2018-10-29: Nadine Seiler: updated comments
  * - 2018-10-30: Severin Zahler: Added check for Login and redirect to Forbidden page.
+ * - 2018-10-30: Severin Zahler: Added method to build viewModel.
  *
  * summary: Controller for OrderForm view.
 */
 
 require_once("./persistence/HpDataDbContext.php");
 require_once("./models/Order.php");
+require_once("./viewmodels/OrderViewModel.php");
 
 class MyOrdersController extends Controller {
 	
@@ -33,35 +35,81 @@ class MyOrdersController extends Controller {
 			$dbContext = new HpDataDbContext();
 			$orders = $dbContext->getAllOrdersByUser($_SESSION["username"]);
 			
-			require_once("./views/$viewName.php");
+			$orderViewModels = array();
 			
-			foreach ($orders as $order) {
-				echo($order->id . '<br>');
-				echo($order->date . '<br>');
-				echo($order->name . '<br>');
-				echo($order->email . '<br>');
-				echo($order->orderType . '<br>');
-				echo($order->languages . '<br>');
-				echo($order->fonts . '<br>');
-				echo($order->orderDescription . '<br>');
-				echo($order->text . '<br>');
-				echo($order->translation . '<br>');
-				echo($order->transcription . '<br>');
-				echo($order->derivation . '<br>');
-				echo($order->offer . '<br>');
-				echo($order->gallery . '<br>');
-				echo($order->payment . '<br>');
-				echo($order->currency . '<br>');
-				echo($order->comments . '<br>');
-				echo($order->status . '<br>');
-				echo($order->lastChange . '<br>');
+			foreach($orders as $order) {
+				$orderViewModels[] = MyOrdersController::buildViewModel($order);
 			}
 			
-			
+			require_once("./views/$viewName.php");
 		}
 		else {
 			require_once("./views/Forbidden.php");
 		}
+	}
+	
+	private static function buildViewModel($order) {
+		$viewModel = new OrderViewModel();
+			
+		$viewModel->id = $order->id;
+		
+		$date = new DateTime($order->date);
+		$viewModel->date = date_format($date,"d.m.Y");
+		
+		switch ($order->orderType) {
+			case "translation-transcription":
+				$viewModel->orderType = "Übersetzung + Transkription";
+				$viewModel->hasTranslation = true;
+				$viewModel->hasTranscription = true;
+				break;
+			case "translation":
+				$viewModel->orderType = "Übersetzung";
+				$viewModel->hasTranslation = true;
+				$viewModel->hasTranscription = false;
+				break;
+			case "transcription":
+				$viewModel->orderType = "Transkription";
+				$viewModel->hasTranslation = false;
+				$viewModel->hasTranscription = true;
+				break;
+			default :
+				$viewModel->orderType = "Andere Frage";
+				$viewModel->hasTranslation = false;
+				$viewModel->hasTranscription = false;
+		}
+		
+		$languageArray = explode(",", $order->languages);
+		for ($i = 0; $i < sizeof($languageArray); $i++) {
+			$viewModel->languages .= ucfirst($languageArray[$i]) . ' ';
+		}
+		
+		if (strlen($order->text) == 0) {
+			$viewModel->text = $order->orderDescription;
+		}
+		else {
+			$viewModel->text = $order->text;
+		}
+		
+		$viewModel->translation = $order->translation;
+		$viewModel->transcription = $order->transcription;
+		
+		if ($order->status == "COMPLETED") {
+			$viewModel->status = "Abgeschlossen";
+			$viewModel->statusClass = "text-completed";
+		}
+		else {
+			$viewModel->status = "In Bearbeitung";
+			$viewModel->statusClass = "text-pending";
+		}
+		
+		if ($order->status == "COMPLETED") {
+			$viewModel->isCompleted = true;
+		}
+		else {
+			$viewModel->isCompleted = false;
+		}
+		
+		return $viewModel;
 	}
 }
 
