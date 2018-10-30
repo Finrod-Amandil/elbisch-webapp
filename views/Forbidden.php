@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 /*
- * file: views/Register.php
+ * file: views/Forbidden.php
  * author: Severin Zahler, Nadine Seiler
  * history:
  * - 2018-10-30: Severin Zahler: added file
  *
  * summary:
- * The Register view which displays feedback from the Register process.
+ * Error page for trying to access a page that the user does not have permission for.
  */
 ?>
 <html>
