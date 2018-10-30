@@ -20,7 +20,7 @@ class UsersDbContext extends DbContext {
 	 * users DB and connects to it.
 	 */
 	public function __construct() {
-		parent::__construct('localhost', 'webuser', 'superSecurePassword', 'elbisch-webapp_users');
+		parent::__construct('localhost', 'root', '', 'elbisch-webapp_users');
 		
 		try {
 			$this->connect();

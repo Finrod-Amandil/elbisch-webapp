@@ -21,7 +21,7 @@ class HpDataDbContext extends DbContext {
 	 * homepage-data DB and connects to it.
 	 */
 	public function __construct() {
-		parent::__construct('localhost', 'webuser', 'superSecurePassword', 'elbisch-webapp_hp-data');
+		parent::__construct('localhost', 'root', '', 'elbisch-webapp_hp-data');
 		
 		try {
 			$this->connect();
