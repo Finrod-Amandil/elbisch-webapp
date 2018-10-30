@@ -7,6 +7,7 @@
  * - 2018-10-27: Severin Zahler: Renamed file from MyOrders to MyOrdersController
  * - 2018-10-27: Severin Zahler: Added script for testing DB access
  * - 2018-10-29: Nadine Seiler: updated comments
+ * - 2018-10-30: Severin Zahler: Added check for Login and redirect to Forbidden page.
  *
  * summary: Controller for OrderForm view.
 */
