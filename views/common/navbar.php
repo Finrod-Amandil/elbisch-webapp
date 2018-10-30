@@ -137,11 +137,6 @@ if (session_status() == PHP_SESSION_NONE) {
 			emailErrorSpan.style.display = "block";
 			emailErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"E-Mail\" aus.";
 		}
-		else if (!isValidEmail(emailValue)) {
-			isFormValid = false;
-			emailErrorSpan.style.display = "block";
-			emailErrorSpan.innerHTML = "Die E-Mail-Adresse ist ungültig.";
-		}
 		
 		if (isEmpty(passwordValue)) {
 			isFormValid = false;
@@ -213,6 +208,61 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 </div>
 
+<!-- Front-end validation for registration -->
+<script type="text/javascript">
+	function validateRegistrationForm() {
+		var emailValue = document.getElementById("input_register_email").value;
+		var emailErrorSpan = document.getElementById("validation_error_register_email");
+		
+		var passwordValue = document.getElementById("input_register_password").value;
+		var passwordErrorSpan = document.getElementById("validation_error_register_password");
+		
+		var password2Value = document.getElementById("input_register_password2").value;
+		var password2ErrorSpan = document.getElementById("validation_error_register_password2");
+		
+		var isFormValid = true;
+		
+		emailErrorSpan.style.display = "none";
+		passwordErrorSpan.style.display = "none";
+		password2ErrorSpan.style.display = "none";
+		
+		if (isEmpty(emailValue)) {
+			isFormValid = false;
+			emailErrorSpan.style.display = "block";
+			emailErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"E-Mail\" aus.";
+		}
+		else if (!isValidEmail(emailValue)) {
+			isFormValid = false;
+			emailErrorSpan.style.display = "block";
+			emailErrorSpan.innerHTML = "Die E-Mail-Adresse ist ungültig.";
+		}
+		
+		if (isEmpty(passwordValue)) {
+			isFormValid = false;
+			passwordErrorSpan.style.display = "block";
+			passwordErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"Passwort\" aus.";
+		}
+		
+		if (isEmpty(password2Value)) {
+			isFormValid = false;
+			password2ErrorSpan.style.display = "block";
+			password2ErrorSpan.innerHTML = "Bitte füllen Sie das Feld \"Passwort wiederholen\" aus.";
+		}
+		else if (passwordValue !== password2Value) {
+			isFormValid = false;
+			passwordErrorSpan.style.display = "block";
+			passwordErrorSpan.innerHTML = "Die beiden Passwörter stimmen nicht überein.";
+			password2ErrorSpan.style.display = "block";
+			password2ErrorSpan.innerHTML = "Die beiden Passwörter stimmen nicht überein.";
+		}
+		
+		if (isFormValid) {
+			var form = document.getElementById("form_register");
+			form.submit();
+		}
+	}
+</script>
+
 <!-- Modal dialog for registration -->
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register_dialog">
 	<div class="modal-dialog" role="document">
@@ -231,7 +281,7 @@ if (session_status() == PHP_SESSION_NONE) {
 						<div class="col-xs-8">
 							<input id="input_register_email" type="text" name="email" />
 							<br>
-							<span id="validation_error_register_emil" class="validation-error"></span>
+							<span id="validation_error_register_email" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
@@ -256,7 +306,7 @@ if (session_status() == PHP_SESSION_NONE) {
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" value="Registrieren"  class="btn" />
+					<button type="button"  class="btn" onclick="validateRegistrationForm();">Registrieren</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</form>
