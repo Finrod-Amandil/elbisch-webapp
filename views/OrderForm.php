@@ -355,7 +355,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									<div class="col-xl-3 col-lg-4 label">
 										<p>Sprache <span class="required">*</span></p>
 									</div>
-									<div class="form-group col-xl-2 col-lg-3 form-group-lang">
+									<div class="form-group col-xl-5 col-lg-5 form-group-lang">
 										<div class="row checkbox-row">
 											<label class="form-check-label">
 												<input type="checkbox" onclick="validateForm();" class="form-check-input checkbox-language" id="checkbox-quenya" value="quenya" name="language_quenya">

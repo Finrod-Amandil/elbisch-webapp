@@ -8,6 +8,7 @@
  * - 2018-10-29: Nadine Seiler: updated comments
  * - 2018-10-29: Severin Zahler: Added front-end validation for Login.
  * - 2018-10-30: Severin Zahler: Added front-end validation for Registration.
+ * - 2018-10-30: Severin Zahler: Added styling for dialogs
  *
  * summary:
  * The navigation bar partial view shared across all views. Also contains
@@ -174,30 +175,28 @@ if (session_status() == PHP_SESSION_NONE) {
 			</div>
 			<form id="form_login" method="post" action="./login">
 				<div class="modal-body">
-					Bitte geben Sie ihre Login-Daten ein.
+					<div class="row"><p>Bitte geben Sie ihre Login-Daten ein.</p></div>
 					<div class="row">
-						<div class="col-xs-4">
-							<p>E-mail</p>
+						<div class="dialog-label">
+							<p>E-Mail</p>
 						</div>
-						<div class="col-xs-8">
-							<input id="input_login_email" type="text" name="email" />
-							<br>
+						<div class="dialog-input">
+							<input id="input_login_email" type="text" name="email" class="form-control"/>
 							<span id="validation_error_login_email" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="dialog-label">
 							<p>Passwort</p>
 						</div>
-						<div class="col-xs-8">
-							<input id="input_login_password" type="password" name="password" />
-							<br>
+						<div class="dialog-input">
+							<input id="input_login_password" type="password" name="password" class="form-control"/>
 							<span id="validation_error_input_password" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
 						<!-- Register link closes this modal and opens another one -->
-						<p>Noch keinen Account? <a data-toggle="modal" data-target="#register" data-dismiss="modal">Registrieren</a></p>
+						<p>Noch keinen Account? <a data-toggle="modal" data-target="#register" data-dismiss="modal" class="dialog-link">Registrieren</a></p>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -274,34 +273,31 @@ if (session_status() == PHP_SESSION_NONE) {
 			</div>
 			<form id="form_register" method="post" action="./register">
 				<div class="modal-body">
-					Bitte geben Sie ihre Login-Daten ein.
+					<div class="row"><p>Bitte geben Sie ihre Login-Daten ein.</p></div>
 					<div class="row">
-						<div class="col-xs-4">
-							<p>E-mail</p>
+						<div class="dialog-label">
+							<p>E-Mail</p>
 						</div>
-						<div class="col-xs-8">
-							<input id="input_register_email" type="text" name="email" />
-							<br>
+						<div class="dialog-input">
+							<input id="input_register_email" type="text" name="email" class="form-control"/>
 							<span id="validation_error_register_email" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="dialog-label">
 							<p>Passwort</p>
 						</div>
-						<div class="col-xs-8">
-							<input id="input_register_password" type="password" name="password" />
-							<br>
+						<div class="dialog-input">
+							<input id="input_register_password" type="password" name="password" class="form-control"/>
 							<span id="validation_error_register_password" class="validation-error"></span>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4">
+						<div id="label_password2" class="dialog-label">
 							<p>Passwort wiederholen</p>
 						</div>
-						<div class="col-xs-8">
-							<input id="input_register_password2" type="password" name="password_2" />
-							<br>
+						<div class="dialog-input">
+							<input id="input_register_password2" type="password" name="password_2" class="form-control"/>
 							<span id="validation_error_register_password2" class="validation-error"></span>
 						</div>
 					</div>

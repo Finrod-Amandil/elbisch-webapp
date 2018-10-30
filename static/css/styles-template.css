@@ -4,6 +4,7 @@
  * history:
  * - 2018-10-03: Nadine Seiler: added file
  * - 2018-10-29: Nadine Seiler: updated comments
+ * - 2018-10-30: Severin Zahler: Added styling for dialogs
  *
  * summary:
  * Styles for view template including navigation and footer.
@@ -167,6 +168,40 @@ mark.lg-only {
 .validation-error {
 	color:red;
 	display: none;
+}
+
+.dialog-label {
+	padding-top: 8px;
+	width: 100px;
+}
+
+#label_password2 {
+	padding-top: 0px;
+}
+
+#label_password2 p {
+	margin-top: -5px;
+}
+
+.dialog-input {
+	width: 300px;
+}
+
+.dialog-link {
+	color:tan !important;
+	font-weight: bold !important;
+}
+
+.dialog-link:hover {
+	text-decoration: underline !important;
+}
+
+.modal-body {
+	padding-left: 40px;
+}
+
+.modal-body .row {
+	margin-bottom: 10px;
 }
 
 @media (max-width: 1200px) {
