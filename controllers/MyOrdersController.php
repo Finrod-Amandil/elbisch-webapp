@@ -22,10 +22,15 @@ class MyOrdersController extends Controller {
 	 * orders of that user to display them.
 	 */
 	public static function CreateView($viewName) {
-		if (true) {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+			session_regenerate_id();
+		}
+		
+		if ($_SESSION["logged_in"] and isset($_SESSION["username"])) {
 			
 			$dbContext = new HpDataDbContext();
-			$orders = $dbContext->getAllOrdersByUser("severin.zahler@gmail.com");
+			$orders = $dbContext->getAllOrdersByUser($_SESSION["username"]);
 			
 			require_once("./views/$viewName.php");
 			
@@ -54,7 +59,7 @@ class MyOrdersController extends Controller {
 			
 		}
 		else {
-			require_once("./views/NotFound.php");
+			require_once("./views/Forbidden.php");
 		}
 	}
 }
