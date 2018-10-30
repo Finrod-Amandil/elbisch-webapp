@@ -25,6 +25,10 @@ mark.lg-only {
 	color: #f7f7f7;
 }
 
+#viewport, .container-outer {
+	min-height: 900px;
+}
+
 .container-order {
 	border: 4px solid tan;
 	border-radius: 15px;
